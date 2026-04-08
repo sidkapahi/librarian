@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>librarian</Name>
-  <Repository>yourusername/librarian:latest</Repository>
-  <Registry>https://hub.docker.com/r/yourusername/librarian</Registry>
+  <Repository>sidkapahi/librarian:latest</Repository>
+  <Registry>https://hub.docker.com/r/fallsoldier/librarian</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/yourusername/librarian</Support>
-  <Project>https://github.com/yourusername/librarian</Project>
+  <Support>https://github.com/sidkapahi/librarian</Support>
+  <Project>https://github.com/sidkapahi/librarian</Project>
   <Overview>Discord bot for requesting audiobooks via Bookshelf (Readarr fork). Works like Requestrr but for audiobooks. Supports slash commands, approval queues, DM notifications, and full JSON logging.</Overview>
   <Category>Tools:</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/yourusername/librarian/main/librarian.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/yourusername/librarian/main/icon.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/sidkapahi/librarian/main/librarian.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/sidkapahi/librarian/main/icon.png</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DateInstalled/>
-  <DonateText/>
-  <DonateLink/>
+  <DonateText/>Buy me a coffee!</DonateText>
+  <DonateLink/>https://buymeacoffee.com/sidkapahi</DonateLink>
   <Requires>Bookshelf (Readarr fork) must be installed and running. A Discord bot token is required from https://discord.com/developers/applications</Requires>
 
   <!-- ── Volumes ─────────────────────────────────────────────────────── -->
