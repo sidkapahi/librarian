@@ -9,7 +9,7 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/sidkapahi/curatarr</Support>
   <Project>https://github.com/sidkapahi/curatarr</Project>
-  <Overview>⚠️ REQUIRES: Bookshelf (Readarr fork), Prowlarr with audiobook indexers, and a Discord bot token before this will work.
+  <Overview>REQUIRES: Bookshelf (Readarr fork), Prowlarr with audiobook indexers, and a Discord bot token before this will work.
 
 A Discord bot for requesting audiobooks via Bookshelf (the Readarr fork). Think of it as Requestrr, but for audiobooks. Supports slash commands, approval queues, DM notifications, and full JSON logging.</Overview>
   <Category>Tools:</Category>
