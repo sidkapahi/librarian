@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <n>curatarr</n>
+  <Repository>fallsoldier/curatarr:latest</Repository>
+  <Registry>https://hub.docker.com/r/fallsoldier/curatarr</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/sidkapahi/curatarr</Support>
+  <Project>https://github.com/sidkapahi/curatarr</Project>
+  <Overview>⚠️ REQUIRES: Bookshelf (Readarr fork), Prowlarr with audiobook indexers, and a Discord bot token before this will work.
+
+A Discord bot for requesting audiobooks via Bookshelf (the Readarr fork). Think of it as Requestrr, but for audiobooks. Supports slash commands, approval queues, DM notifications, and full JSON logging.</Overview>
+  <Category>Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/sidkapahi/curatarr/main/curatarr.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/sidkapahi/curatarr/main/icon.png</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText>Buy me a coffee!</DonateText>
+  <DonateLink>https://buymeacoffee.com/sidkapahi</DonateLink>
+  <Requires>Bookshelf (Readarr fork) must be installed and running. Prowlarr with audiobook indexers must be configured and synced to Bookshelf. A Discord bot token is required from https://discord.com/developers/applications</Requires>
+
+  <Config
+    Name="Config"
+    Target="/config"
+    Default="/mnt/user/appdata/curatarr"
+    Mode="rw"
+    Description="Stores bot config, logs, and pending requests."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false"
+  >/mnt/user/appdata/curatarr</Config>
+
+  <Config
+    Name="Discord Bot Token"
+    Target="DISCORD_TOKEN"
+    Default=""
+    Mode=""
+    Description="Your Discord bot token from https://discord.com/developers/applications → Bot → Token"
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="true"
+  />
+
+  <Config
+    Name="Discord Client ID"
+    Target="DISCORD_CLIENT_ID"
+    Default=""
+    Mode=""
+    Description="Your Discord application Client ID from https://discord.com/developers/applications → OAuth2"
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="false"
+  />
+
+  <Config
+    Name="Discord Server ID"
+    Target="DISCORD_GUILD_ID"
+    Default=""
+    Mode=""
+    Description="Your Discord server ID. Recommended — makes slash command registration instant. Enable Developer Mode in Discord settings, then right-click your server → Copy Server ID"
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Bookshelf URL"
+    Target="BOOKSHELF_URL"
+    Default="http://bookshelf:8787"
+    Mode=""
+    Description="URL to your Bookshelf instance. If on the same Docker network use the container name e.g. http://bookshelf:8787. Otherwise use your Unraid IP e.g. http://192.168.1.x:8787"
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="false"
+  />
+
+  <Config
+    Name="Bookshelf API Key"
+    Target="BOOKSHELF_API_KEY"
+    Default=""
+    Mode=""
+    Description="Your Bookshelf API key. Found in Bookshelf → Settings → General → API Key"
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="true"
+  />
+
+  <Config
+    Name="Quality Profile Name"
+    Target="QUALITY_PROFILE_NAME"
+    Default="Spoken"
+    Mode=""
+    Description="The name of the quality profile in Bookshelf to use for audiobooks. Must match exactly as shown in Bookshelf Settings → Profiles. Common values: Spoken, eBook."
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="false"
+  />
+
+  <Config
+    Name="Metadata Profile Name"
+    Target="METADATA_PROFILE_NAME"
+    Default="None"
+    Mode=""
+    Description="The name of the metadata profile in Bookshelf to use. Must match exactly as shown in Bookshelf Settings → Profiles. Common values: None, Standard."
+    Type="Variable"
+    Display="always"
+    Required="true"
+    Mask="false"
+  />
+
+  <Config
+    Name="Admin User ID"
+    Target="ADMIN_USER_ID"
+    Default=""
+    Mode=""
+    Description="Optional but recommended. Your personal Discord User ID to receive approval request DMs. Right-click your name in Discord → Copy User ID (requires Developer Mode). Leave blank to DM all server administrators."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Admin Role ID"
+    Target="ADMIN_ROLE_ID"
+    Default=""
+    Mode=""
+    Description="Optional. Discord Role ID that counts as admin for approvals and admin commands. Leave blank to use the server Administrator permission instead."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Request Channel ID"
+    Target="REQUEST_CHANNEL_ID"
+    Default=""
+    Mode=""
+    Description="Optional. Restrict the bot to a specific channel. Right-click the channel in Discord → Copy Channel ID. Leave blank to allow commands in all channels."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Require Approval"
+    Target="REQUIRE_APPROVAL"
+    Default="false"
+    Mode=""
+    Description="Set to true to require admin approval before downloads trigger. Admins receive a DM with Approve/Deny buttons. Set to false for instant downloads."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Timezone"
+    Target="TZ"
+    Default="UTC"
+    Mode=""
+    Description="Timezone for log timestamps e.g. America/Toronto, America/New_York, Europe/London."
+    Type="Variable"
+    Display="always"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Log File Path"
+    Target="LOG_FILE"
+    Default="/config/curatarr.log"
+    Mode=""
+    Description="Path inside the container where logs are written."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Node Version"
+    Target="NODE_VERSION"
+    Default="20.20.2"
+    Mode=""
+    Description=""
+    Type="Variable"
+    Display="none"
+    Required="false"
+    Mask="false"
+  />
+
+  <Config
+    Name="Yarn Version"
+    Target="YARN_VERSION"
+    Default="1.22.22"
+    Mode=""
+    Description=""
+    Type="Variable"
+    Display="none"
+    Required="false"
+    Mask="false"
+  />
+
+</Container>

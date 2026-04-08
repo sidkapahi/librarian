@@ -1,46 +1,32 @@
 version: "3.8"
 
 services:
-  librarian:
-    image: yourusername/librarian:latest
-    container_name: librarian
+  curatarr:
+    image: fallsoldier/curatarr:latest
+    container_name: curatarr
     restart: unless-stopped
     environment:
       # ── Required ──────────────────────────────────────────
-      # Your Discord bot token from https://discord.com/developers/applications
       - DISCORD_TOKEN=
-
-      # Your Discord application client ID
       - DISCORD_CLIENT_ID=
-
-      # Your Bookshelf container URL e.g. http://bookshelf:8787 or http://192.168.1.x:8787
-      - BOOKSHELF_URL=
-
-      # Your Bookshelf API key from Settings → General
+      - BOOKSHELF_URL=http://bookshelf:8787
       - BOOKSHELF_API_KEY=
 
       # ── Optional ──────────────────────────────────────────
-      # Your Discord server ID (recommended for faster command registration)
       - DISCORD_GUILD_ID=
-
-      # Channel ID to restrict bot to one channel (leave blank for all channels)
-      - REQUEST_CHANNEL_ID=
-
-      # Role ID that counts as admin for approvals (leave blank to use server Administrator permission)
+      - ADMIN_USER_ID=
       - ADMIN_ROLE_ID=
-
-      # Set to true to require admin approval before downloads trigger
+      - REQUEST_CHANNEL_ID=
+      - QUALITY_PROFILE_NAME=Spoken
+      - METADATA_PROFILE_NAME=None
       - REQUIRE_APPROVAL=false
-
-      # Log file path inside container
-      - LOG_FILE=/config/librarian.log
+      - LOG_FILE=/config/curatarr.log
+      - TZ=UTC
 
     volumes:
-      # Change left side to your preferred appdata path
-      - /mnt/user/appdata/librarian:/config
+      - /mnt/user/appdata/curatarr:/config
 
     networks:
-      # Change to match your Docker network name
       - your_docker_network
 
 networks:

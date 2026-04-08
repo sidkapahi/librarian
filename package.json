@@ -1,7 +1,7 @@
 {
-  "name": "librarian",
+  "name": "curatarr",
   "version": "1.0.0",
-  "description": "Discord bot for Bookshelf/Readarr audiobook requests",
+  "description": "Discord bot for requesting audiobooks via Bookshelf (Readarr fork). Think of it as Requestrr, but for audiobooks.",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"

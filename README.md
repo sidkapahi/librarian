@@ -1,12 +1,16 @@
-# Librarian
+# Curatarr
 
 A Discord bot for requesting audiobooks via [Bookshelf](https://github.com/pennydreadful/bookshelf) (the Readarr fork). Think of it as Requestrr, but for audiobooks.
 
 ![Version](https://img.shields.io/badge/version-v1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-> [!IMPORTANT]
+> [!WARNING]
 > This project was built with AI assistance (vibe coded). While it works, the code hasn't been professionally audited — use at your own risk. If you get a chance, feel free to review the code before deploying. PRs and fixes are always welcome!
+
+> [!NOTE]
+> This is a passion project and I'm actively looking for developers who want to get involved! Whether it's bug fixes, new features, or just throwing ideas around — open an issue or start a discussion. Would love to see where this goes with some help. 🎧
+
 ---
 
 ## Features
@@ -22,9 +26,6 @@ A Discord bot for requesting audiobooks via [Bookshelf](https://github.com/penny
 - **Requester notifications** — users get a DM when their request is approved or denied
 - **Duplicate detection** — checks your library before showing results
 - **Full JSON logging** — every action logged to disk
-
-> [!NOTE]
-> This is a passion project and I'm actively looking for developers who want to get involved! Whether it's bug fixes, new features, or just throwing ideas around — open an issue or start a discussion. Would love to see where this goes with some help. 🎧
 
 ---
 
@@ -42,7 +43,7 @@ A Discord bot for requesting audiobooks via [Bookshelf](https://github.com/penny
 ### 1. Create a Discord Application
 
 1. Go to [discord.com/developers/applications](https://discord.com/developers/applications)
-2. Click **New Application** and name it `Librarian`
+2. Click **New Application** and name it `Curatarr`
 3. Go to **Bot** → click **Add Bot**
 4. Under **Token** click **Reset Token** and copy it — this is your `DISCORD_TOKEN`
 5. Scroll down and enable these **Privileged Gateway Intents**:
@@ -78,9 +79,9 @@ Copy the generated URL and open it in your browser to add the bot to your server
 version: "3.8"
 
 services:
-  librarian:
-    image: yourusername/librarian:latest
-    container_name: librarian
+  curatarr:
+    image: fallsoldier/curatarr:latest
+    container_name: curatarr
     restart: unless-stopped
     environment:
       - DISCORD_TOKEN=your_discord_bot_token
@@ -92,10 +93,10 @@ services:
       - QUALITY_PROFILE_NAME=Spoken
       - METADATA_PROFILE_NAME=None
       - REQUIRE_APPROVAL=false
-      - LOG_FILE=/config/librarian.log
+      - LOG_FILE=/config/curatarr.log
       - TZ=America/Toronto
     volumes:
-      - /mnt/user/appdata/librarian:/config
+      - /mnt/user/appdata/curatarr:/config
     networks:
       - your_docker_network
 
@@ -112,7 +113,7 @@ docker compose up -d
 
 ```bash
 docker run -d \
-  --name librarian \
+  --name curatarr \
   --restart unless-stopped \
   --network your_docker_network \
   -e DISCORD_TOKEN=your_discord_bot_token \
@@ -124,15 +125,15 @@ docker run -d \
   -e QUALITY_PROFILE_NAME=Spoken \
   -e METADATA_PROFILE_NAME=None \
   -e REQUIRE_APPROVAL=false \
-  -e LOG_FILE=/config/librarian.log \
+  -e LOG_FILE=/config/curatarr.log \
   -e TZ=America/Toronto \
-  -v /mnt/user/appdata/librarian:/config \
-  yourusername/librarian:latest
+  -v /mnt/user/appdata/curatarr:/config \
+  fallsoldier/curatarr:latest
 ```
 
 #### Option C — Unraid Community Apps
 
-Search for **Librarian** in the Community Apps store and install directly. All fields are pre-populated — just fill in your values.
+Search for **Curatarr** in the Community Apps store and install directly. All fields are pre-populated — just fill in your values.
 
 ---
 
@@ -151,7 +152,7 @@ Search for **Librarian** in the Community Apps store and install directly. All f
 | `REQUIRE_APPROVAL` | — | `false` | Set to `true` to require admin approval before downloads trigger |
 | `REQUEST_CHANNEL_ID` | — | — | Restrict bot to a specific channel. Leave blank for all channels |
 | `ADMIN_ROLE_ID` | — | — | Role ID for admin commands. Leave blank to use server Administrator permission |
-| `LOG_FILE` | — | `/config/librarian.log` | Path inside container where logs are written |
+| `LOG_FILE` | — | `/config/curatarr.log` | Path inside container where logs are written |
 | `TZ` | — | `UTC` | Timezone for log timestamps e.g. `America/Toronto` |
 
 ---
@@ -180,42 +181,35 @@ Search for **Librarian** in the Community Apps store and install directly. All f
 ## Building from Source
 
 ```bash
-git clone https://github.com/yourusername/librarian.git
-cd librarian
+git clone https://github.com/sidkapahi/curatarr.git
+cd curatarr
 npm install
-docker build -t librarian:latest .
+docker build -t curatarr:latest .
 ```
 
 To push to Docker Hub:
 
 ```bash
-docker tag librarian:latest yourusername/librarian:latest
-docker push yourusername/librarian:latest
+docker tag curatarr:latest fallsoldier/curatarr:latest
+docker push fallsoldier/curatarr:latest
 ```
 
 ---
 
 ## Updating
 
-If you have `bot.js` mounted as a volume (recommended for development):
-
-```bash
-# Replace bot.js with the new version, then:
-docker restart librarian
-```
-
 If running from the Docker image:
 
 ```bash
-docker pull yourusername/librarian:latest
-docker restart librarian
+docker pull fallsoldier/curatarr:latest
+docker restart curatarr
 ```
 
 ---
 
 ## Logs
 
-All actions are logged to `/config/librarian.log` in JSON format:
+All actions are logged to `/config/curatarr.log` in JSON format:
 
 ```json
 {"timestamp":"2026-04-08, 12:00:00","level":"INFO","message":"Request command","data":{"user":"Sid#1234","query":"Dune"}}

@@ -23,7 +23,7 @@ const config = {
   REQUEST_CHANNEL_ID: process.env.REQUEST_CHANNEL_ID || null,
   ADMIN_ROLE_ID: process.env.ADMIN_ROLE_ID || null,
   ADMIN_USER_ID: process.env.ADMIN_USER_ID || null,
-  LOG_FILE: process.env.LOG_FILE || "/config/librarian.log",
+  LOG_FILE: process.env.LOG_FILE || "/config/curatarr.log",
   REQUIRE_APPROVAL: process.env.REQUIRE_APPROVAL === "true",
   QUALITY_PROFILE_NAME: process.env.QUALITY_PROFILE_NAME || "Spoken",
   METADATA_PROFILE_NAME: process.env.METADATA_PROFILE_NAME || "None",
@@ -285,7 +285,7 @@ function bookEmbedUser(book, status) {
     .setTitle(parsed.title)
     .setAuthor({ name: parsed.author })
     .setColor(color)
-    .setFooter({ text: "Librarian" })
+    .setFooter({ text: "Curatarr" })
     .setTimestamp();
 
   if (cover) embed.setImage(cover);
@@ -587,7 +587,7 @@ client.on("interactionCreate", async function(interaction) {
       var queue = await getQueue();
       var items = queue.records || queue || [];
       if (!items.length) return interaction.editReply({ content: "📭 The download queue is empty." });
-      var qEmbed = new EmbedBuilder().setTitle("📥 Download Queue").setColor(0x5865f2).setTimestamp().setFooter({ text: "Librarian" });
+      var qEmbed = new EmbedBuilder().setTitle("📥 Download Queue").setColor(0x5865f2).setTimestamp().setFooter({ text: "Curatarr" });
       items.slice(0, 10).forEach(function(item) {
         var size = item.size ? (item.size / 1024 / 1024).toFixed(0) + "MB" : "";
         qEmbed.addFields({ name: item.title || "Unknown", value: "Status: " + (item.status || "unknown") + (size ? " • " + size : ""), inline: false });
