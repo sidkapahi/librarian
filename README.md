@@ -8,9 +8,6 @@ A Discord bot for requesting audiobooks via [Bookshelf](https://github.com/penny
 > [!WARNING]
 > This project was built with AI assistance (vibe coded). While it works, the code hasn't been professionally audited — use at your own risk. If you get a chance, feel free to review the code before deploying. PRs and fixes are always welcome!
 
-> [!NOTE]
-> This is a passion project and I'm actively looking for developers who want to get involved! Whether it's bug fixes, new features, or just throwing ideas around — open an issue or start a discussion. Would love to see where this goes with some help. 🎧
-
 ---
 
 ## Features
@@ -26,6 +23,9 @@ A Discord bot for requesting audiobooks via [Bookshelf](https://github.com/penny
 - **Requester notifications** — users get a DM when their request is approved or denied
 - **Duplicate detection** — checks your library before showing results
 - **Full JSON logging** — every action logged to disk
+
+> [!NOTE]
+> This is a passion project and I'm actively looking for developers who want to get involved! Whether it's bug fixes, new features, or just throwing ideas around — open an issue or start a discussion. Would love to see where this goes with some help. 🎧
 
 ---
 
