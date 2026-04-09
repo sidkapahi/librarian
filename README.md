@@ -128,7 +128,7 @@ docker run -d \
   -e LOG_FILE=/config/curatarr.log \
   -e TZ=America/Toronto \
   -v /mnt/user/appdata/curatarr:/config \
-  fallsoldier/curatarr:latest
+  sidkapahiii/curatarr:latest
 ```
 
 #### Option C — Unraid Community Apps
